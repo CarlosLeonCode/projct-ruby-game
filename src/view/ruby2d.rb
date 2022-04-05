@@ -1,4 +1,5 @@
 require 'ruby2d'
+require_relative '../model/shapes'
 
 module View
 
@@ -22,28 +23,14 @@ module View
         private
 
         def render_food(state)
-            extend Ruby2D::DSL
-
             food = state.food.first
-            Square.new(
-                x: food.col * @pixel_size, 
-                y: food.row * @pixel_size,
-                size: @pixel_size,
-                color: 'yellow'
-            )
+            Shapes::square( x: food.col, y: food.row, color: 'yellow', pxl_size: @pixel_size )
         end
 
         def render_snake(state)
-            extend Ruby2D::DSL
-
             snake = state.snake.positions
             snake.each do |pos|
-                Square.new(
-                    x: pos.col * @pixel_size, 
-                    y: pos.row * @pixel_size,
-                    size: @pixel_size,
-                    color: 'green'
-                )
+                Shapes::square( x: pos.col, y: pos.row, color: 'green', pxl_size: @pixel_size )
             end
 
         end
