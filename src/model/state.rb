@@ -1,19 +1,14 @@
 module Model
 
-    class Coordinate < Struct.new(:row, :col)
-    end
+    class Coordinate < Struct.new(:row, :col); end
 
-    class Food < Coordinate
-    end
+    class Food < Coordinate; end
 
-    class Snake < Struct.new(:positions)
-    end
+    class Snake < Struct.new(:positions); end
 
-    class Grid < Struct.new(:rows, :cols)
-    end
+    class Grid < Struct.new(:rows, :cols); end
 
-    class Game < Struct.new(:snake, :grid, :food)
-    end
+    class Game < Struct.new(:snake, :food, :grid); end
 
     def self.init_state
         Model::Game.new(

@@ -5,6 +5,5 @@ view = View::Ruby2dView.new
 
 
 initial_state = Model::init_state
-puts initial_state.inspect
-jard
+# jard
 view.render(initial_state)
