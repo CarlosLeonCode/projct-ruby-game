@@ -8,16 +8,20 @@ module View
             @pixel_size = 50
         end
 
-        def render(state)
+        def start(state)
             extend Ruby2D::DSL
 
             set(title: "Snake game", 
                 width: @pixel_size * state.grid.cols, 
                 height: @pixel_size * state.grid.rows)
+            show
+        end
 
+        def render_scene(state)
+            extend Ruby2D::DSL
+            clear
             render_food(state)
             render_snake(state)
-            show
         end
 
         private
@@ -32,7 +36,6 @@ module View
             snake.each do |pos|
                 Shapes::square( x: pos.col, y: pos.row, color: 'green', pxl_size: @pixel_size )
             end
-
         end
     end
 
