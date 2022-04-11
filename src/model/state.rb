@@ -15,7 +15,7 @@ module Model
 
     class Grid < Struct.new(:rows, :cols); end
 
-    class Game < Struct.new(:snake, :food, :grid, :next_direction, :game_finished); end
+    class Game < Struct.new(:snake, :food, :grid, :current_direction, :game_finished); end
 
     def self.init_state
         Model::Game.new(
