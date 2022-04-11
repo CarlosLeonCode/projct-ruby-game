@@ -11,6 +11,7 @@ class App
 
     def start
         @view = View::Ruby2dView.new(self)
+        jard
         Thread.new{ init_timer(@view) }  
         @view.start(@state)
     end

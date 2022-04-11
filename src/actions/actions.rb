@@ -7,7 +7,9 @@ module Actions
 
         new_position = calc_next_position(state)
 
-        if position_is_valid?(state, new_position)
+        if position_is_food?(state, new_position)
+            grow_snake(state, new_position)
+        elsif position_is_valid?(state, new_position)
             move_snake_to(state, new_position)
         else 
             end_game(state)
@@ -15,16 +17,26 @@ module Actions
     end
 
     def self.change_direction(state, direction)
-       if current_direction_is_valid?(state, direction)
-            state.current_direction = direction
-       else
-            puts "Invalid direction"
-       end
-       state
+        if current_direction_is_valid?(state, direction)
+                state.current_direction = direction
+        else
+                puts "Invalid direction"
+        end
+        state
     end
 
     private
 
+    def self.grow_snake(state, new_position)
+        new_snake = [new_position] + state.snake.positions
+        state.snake.positions = new_snake
+        state
+    end
+
+    def self.position_is_food?(state, new_position)
+        state.food.first == new_position
+    end
+    
     def self.calc_next_position(state)
         current_position = state.snake.positions.first
 
