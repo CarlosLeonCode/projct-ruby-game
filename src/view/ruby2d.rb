@@ -24,6 +24,7 @@ module View
 
         def render_scene(state)
             extend Ruby2D::DSL
+            close if state.game_finished
             clear
             render_food(state)
             render_snake(state)
@@ -39,7 +40,7 @@ module View
         def render_snake(state)
             snake = state.snake.positions
             snake.each do |pos|
-                Shapes::square( x: pos.col, y: pos.row, color: 'green', pxl_size: @pixel_size )
+                Shapes::square( x: pos.col, y: pos.row, color: state.snake_color, pxl_size: @pixel_size )
             end
         end
 

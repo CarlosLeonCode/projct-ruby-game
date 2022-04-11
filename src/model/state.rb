@@ -15,7 +15,7 @@ module Model
 
     class Grid < Struct.new(:rows, :cols); end
 
-    class Game < Struct.new(:snake, :food, :grid, :current_direction, :game_finished); end
+    class Game < Struct.new(:snake, :food, :grid, :current_direction, :game_finished, :snake_color); end
 
     def self.init_state
         Model::Game.new(
@@ -28,7 +28,8 @@ module Model
             ),
             Model::Grid.new(8,12),
             Model::Direction::DOWN,
-            false
+            false,
+            [29, 150, 163, 1]
         )
     end
 end

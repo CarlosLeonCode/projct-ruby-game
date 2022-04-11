@@ -8,7 +8,7 @@ module Shapes
             x: x * pxl_size, 
             y: y * pxl_size,
             size: pxl_size,
-            color: color
+            color: Color.new(color)
         )
     end
 end
